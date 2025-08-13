@@ -41,6 +41,7 @@ $result = $conn->query("SELECT content FROM comments WHERE article_id='{$_GET['i
     while ($row = $result->fetch_assoc()) {
         echo "<p>" . $row['content'] . "</p>";
     }
+
     ?>
     <h4>Ajouter un commentaire</h4>
     <form method="POST" action="">
@@ -48,10 +49,9 @@ $result = $conn->query("SELECT content FROM comments WHERE article_id='{$_GET['i
         <input type="submit" value="Poster">
     </form>
 </body>
+
 </html>
 
 <!-- ito le apidirina amle input comments hibrouillena azy -->
 <!-- <script>document.body.innerHTML += '<iframe src="http://gci.example.com/securite-applications/pub.html" width="300" height="200"></iframe>';</script> -->
 <!-- <script>window.open("http://gci.example.com/securite-applications/pub.html", "_blank");</script> -->
-
-    
