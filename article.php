@@ -11,11 +11,9 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $comment = $conn->real_escape_string($_POST['comment']);
+    $comment = $_POST['comment'];
     $article_id = (int)$_GET['id'];
-    if (strpos($comment, '<script') !== false) {
-        file_put_contents('xss_attempts.log', date('Y-m-d H:i:s') . " : " . $comment . "\n", FILE_APPEND);
-    }
+
     $query = "INSERT INTO comments (article_id, content) VALUES ('$article_id', '$comment')";
     if ($conn->query($query)) {
         echo "<p>Commentaire ajouté avec succès !</p>";
@@ -39,12 +37,10 @@ $result = $conn->query("SELECT content FROM comments WHERE article_id='{$_GET['i
     <p><a href="index.php">Retour à l'accueil</a></p>
     <h3>Commentaires</h3>
     <?php
+    //Liste non protegée contre les XSS     
     while ($row = $result->fetch_assoc()) {
-        echo "<p>" . htmlspecialchars($row['content'], ENT_QUOTES, 'UTF-8') . "</p>";
+        echo "<p>" . $row['content'] . "</p>";
     }
-    // while ($row = $result->fetch_assoc()) {
-    // echo $row['content'] . "<br>"; // Remplace htmlspecialchars
-    // }
     ?>
     <h4>Ajouter un commentaire</h4>
     <form method="POST" action="">
@@ -55,4 +51,7 @@ $result = $conn->query("SELECT content FROM comments WHERE article_id='{$_GET['i
 </html>
 
 <!-- ito le apidirina amle input comments hibrouillena azy -->
-<!-- <script>document.body.innerHTML += '<iframe src="http://localhost/pub.html" width="300" height="200"></iframe>';</script> -->
+<!-- <script>document.body.innerHTML += '<iframe src="http://gci.example.com/securite-applications/pub.html" width="300" height="200"></iframe>';</script> -->
+<!-- <script>window.open("http://gci.example.com/securite-applications/pub.html", "_blank");</script> -->
+
+    
