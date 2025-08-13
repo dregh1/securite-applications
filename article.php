@@ -37,6 +37,7 @@ $result = $conn->query("SELECT content FROM comments WHERE article_id='{$_GET['i
     <p><a href="index.php">Retour à l'accueil</a></p>
     <h3>Commentaires</h3>
     <?php
+    //Liste non protegée contre les XSS     
     while ($row = $result->fetch_assoc()) {
         echo "<p>" . $row['content'] . "</p>";
     }
@@ -48,4 +49,9 @@ $result = $conn->query("SELECT content FROM comments WHERE article_id='{$_GET['i
         <input type="submit" value="Poster">
     </form>
 </body>
+
 </html>
+
+<!-- ito le apidirina amle input comments hibrouillena azy -->
+<!-- <script>document.body.innerHTML += '<iframe src="http://gci.example.com/securite-applications/pub.html" width="300" height="200"></iframe>';</script> -->
+<!-- <script>window.open("http://gci.example.com/securite-applications/pub.html", "_blank");</script> -->

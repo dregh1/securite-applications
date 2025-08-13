@@ -1,0 +1,6 @@
+2025-08-13 17:23:38 : <script src=\"pub-redirection.js\"></script>\r\n
+2025-08-13 17:28:10 : <script src=\"pub-redirection.js\"></script>\r\n
+2025-08-13 17:30:03 : <script>document.body.innerHTML += \'<iframe src=\"http://localhost/pub.html\" width=\"300\" height=\"200\"></iframe>\';</script>
+2025-08-13 17:34:29 : <script>window.location.href = \"http://gci.example.com/securite-applications/pub.html\";</script> 
+2025-08-13 17:34:40 : <script>document.body.innerHTML += \'<iframe src=\"http://localhost/pub.html\" width=\"300\" height=\"200\"></iframe>\';</script>
+2025-08-13 17:41:02 : hey.\r\n<script>document.body.innerHTML += \'<iframe src=\"http://gci.example.com/securite-applications/pub.html\" width=\"300\" height=\"200\"></iframe>\';</script>
